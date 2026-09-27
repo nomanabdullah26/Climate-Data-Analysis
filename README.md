@@ -52,21 +52,21 @@ The project includes a wide range of visualizations to explore both temporal and
 ### 1. Time Series Trends
 Long-term trends in temperature and rainfall were visualized using line plots with LOESS smoothing. A dual-axis plot was also created to compare both variables simultaneously.
 
-![Temperature Time Series](climate_plot_1.png)
-![Rainfall Time Series](climate_plot_2.png)
-![Combined Trends](climate_plot_3.png)
+<img src="climate_plot_1.png" width="600" alt="Temperature Time Series">
+<img src="climate_plot_2.png" width="600" alt="Rainfall Time Series">
+<img src="climate_plot_3.png" width="600" alt="Combined Trends">
 
 ### 2. Seasonal Analysis
 Seasonal patterns were analyzed using boxplots, violin plots, and monthly average line charts. These plots reveal distinct wet and dry seasons and highlight the variability in rainfall distribution.
 
-![Seasonal Rainfall Boxplot](climate_plot_5.png)
-![Monthly Rainfall Distribution](climate_plot_9.png)
+<img src="climate_plot_5.png" width="600" alt="Seasonal Rainfall Boxplot">
+<img src="climate_plot_9.png" width="600" alt="Monthly Rainfall Distribution">
 
 ### 3. Heatmaps and Annual Patterns
 A heatmap was generated to visualize rainfall intensity by year and month. Additionally, temperature patterns for the most recent two decades (2000–2023) were plotted to observe year-to-year variations.
 
-![Rainfall Heatmap](climate_plot_7.png)
-![Temperature Patterns Recent Years](climate_plot_8.png)
+<img src="climate_plot_7.png" width="600" alt="Rainfall Heatmap">
+<img src="climate_plot_8.png" width="600" alt="Temperature Patterns Recent Years">
 
 ### 4. Correlation and Trend Analysis
 - A linear regression model (`lm`) was used to quantify temperature and rainfall trends over time.
