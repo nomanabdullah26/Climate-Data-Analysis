@@ -1,92 +1,93 @@
-Climate Data Analysis: Temperature and Rainfall Trends (1901-2023)
-This project performs an Exploratory Data Analysis (EDA) on historical climate data spanning over a century. Using R, the project cleans raw weather data, handles outliers, and generates visualizations to identify long-term trends in temperature and rainfall patterns.
+# Climate Data Analysis: Long-Term Temperature and Rainfall Trends (1901–2023)
 
-Project Overview
-The goal of this analysis is to process a dataset containing monthly temperature and rainfall records from 1901 to 2023. The workflow covers data cleaning, outlier detection using the IQR method, trend analysis, and seasonal decomposition.
+## Project Overview
 
-Dataset
-Input File: sorted_temp_and_rain_dataset.csv
+This project presents a comprehensive Exploratory Data Analysis (EDA) of historical climate data spanning over a century, from 1901 to 2023. Using the R programming language, the analysis focuses on cleaning raw meteorological data, detecting and removing statistical outliers, and generating high-quality visualizations to uncover long-term trends in temperature and rainfall patterns.
 
-Processed File: cleaned_climate_data.csv
+The goal of this project is to provide actionable insights into climate behavior over time, including seasonal variations, annual trends, and the relationship between temperature and precipitation. The analysis is structured to be reproducible, well-documented, and suitable for academic or professional presentation.
 
-Features:
+---
 
-Year: 1901 to 2023
+## Dataset Description
 
-Month: 1 to 12
+The dataset used in this project contains monthly climate records for a period of 123 years. It includes the following key variables:
 
-tem: Temperature in Celsius
+| Column Name | Description                          | Data Type |
+|-------------|--------------------------------------|-----------|
+| `Year`      | The year of the observation (1901–2023) | Integer   |
+| `Month`     | The month of the observation (1–12)     | Integer   |
+| `tem`       | Average temperature in Celsius          | Numeric   |
+| `rain`      | Total rainfall in millimeters           | Numeric   |
 
-rain: Rainfall in millimeters
+**Input File:** `sorted_temp_and_rain_dataset.csv`  
+**Output File:** `cleaned_climate_data.csv`
 
-Data Processing Pipeline
-The analysis is conducted in three main stages:
+---
 
-Data Cleaning:
+## Data Processing Pipeline
 
-Removal of unnecessary columns (e.g., name).
+The analysis follows a structured data processing pipeline to ensure data quality and reliability.
 
-Handling missing values using linear interpolation (approx function).
+### 1. Data Cleaning
+- Removed unnecessary columns (e.g., `name`) to streamline the dataset.
+- Handled missing values using **linear interpolation** (`approx` function) for numeric columns.
+- Corrected invalid entries, such as negative rainfall values, by setting them to zero.
 
-Correction of invalid entries (e.g., negative rainfall values set to 0).
+### 2. Outlier Detection and Removal
+- Applied the **Interquartile Range (IQR)** method to identify outliers in rainfall data.
+- Outliers beyond 1.5 × IQR were flagged and removed to improve trend accuracy.
+- Temperature outliers were assessed using standard deviation thresholds (>3 SD).
 
-Outlier Detection:
+### 3. Data Validation
+- Verified data ranges for temperature, rainfall, month, and year.
+- Ensured no missing values remained after cleaning.
+- Generated summary statistics for final validation.
 
-Applied the Interquartile Range (IQR) method to detect anomalies in rainfall data.
+---
 
-Outliers beyond 1.5 * IQR were identified and removed to ensure trend accuracy.
+## Visualization and Analysis
 
-Visualization & Analysis:
+The project includes a wide range of visualizations to explore both temporal and seasonal patterns.
 
-Generated time series plots to observe long-term changes.
+### 1. Time Series Trends
+Long-term trends in temperature and rainfall were visualized using line plots with LOESS smoothing. A dual-axis plot was also created to compare both variables simultaneously.
 
-Created boxplots and violin plots to analyze seasonal distributions.
+![Temperature Time Series](climate_plot_1.png)
+![Rainfall Time Series](climate_plot_2.png)
+![Combined Trends](climate_plot_3.png)
 
-Calculated correlation between temperature and rainfall.
+### 2. Seasonal Analysis
+Seasonal patterns were analyzed using boxplots, violin plots, and monthly average line charts. These plots reveal distinct wet and dry seasons and highlight the variability in rainfall distribution.
 
-Visualizations
-1. Time Series Trends
-The temperature shows a distinct upward trend over the century, while rainfall remains relatively stable with high annual volatility.
+![Seasonal Rainfall Boxplot](climate_plot_5.png)
+![Monthly Rainfall Distribution](climate_plot_9.png)
 
-https://climate_plot_1.png/
-https://climate_plot_2.png/
-https://climate_plot_3.png/
+### 3. Heatmaps and Annual Patterns
+A heatmap was generated to visualize rainfall intensity by year and month. Additionally, temperature patterns for the most recent two decades (2000–2023) were plotted to observe year-to-year variations.
 
-2. Seasonal Variations
-Analysis of monthly distributions reveals distinct wet and dry seasons. The boxplots and violin plots show the variance in rainfall, highlighting the monsoon months.
+![Rainfall Heatmap](climate_plot_7.png)
+![Temperature Patterns Recent Years](climate_plot_8.png)
 
-https://climate_plot_5.png/
-https://climate_plot_9.png/
+### 4. Correlation and Trend Analysis
+- A linear regression model (`lm`) was used to quantify temperature and rainfall trends over time.
+- Correlation analysis was performed to assess the relationship between temperature and rainfall.
 
-3. Heatmaps and Annual Patterns
-The heatmap illustrates rainfall intensity by year and month, while the line chart tracks temperature patterns for the most recent two decades (2000-2023).
+---
 
-https://climate_plot_7.png/
-https://climate_plot_8.png/
+## Key Findings
 
-Key Findings
-Based on the lm() (Linear Model) trend analysis performed in the script:
+- **Temperature Trend:** A statistically significant warming trend was observed, with temperatures increasing steadily over the century.
+- **Rainfall Trend:** Rainfall patterns remained relatively stable, with high annual variability and no strong linear trend.
+- **Seasonality:**
+  - The hottest months typically occur in the mid-year period.
+  - The wettest months are concentrated in a specific monsoon season, as shown in the boxplots and heatmaps.
+- **Correlation:** A weak or negligible correlation was found between temperature and rainfall on a monthly basis.
 
-Temperature Trend: There is a positive correlation between Year and Temperature. The model indicates a warming trend over the century.
+---
 
-Rainfall Trend: The rainfall trend is slightly negative or negligible compared to temperature, indicating that while temperatures are rising, total annual rainfall has not significantly decreased or increased in a linear fashion.
+## Requirements
 
-Seasonality:
+To run this analysis, you need R installed along with the following packages:
 
-Hottest Month: Typically peaks in the mid-year months (depending on the specific region data).
-
-Wettest Month: Shows a clear peak, likely corresponding to monsoon seasons.
-
-Requirements
-To run this analysis, you need R installed with the following libraries:
-
-r
+```r
 install.packages(c("dplyr", "tidyr", "ggplot2", "lubridate"))
-How to Run
-Clone the repository.
-
-Place the sorted_temp_and_rain_dataset.csv in the project directory.
-
-Run the data_cleaning.R script to generate the cleaned dataset.
-
-Run the visualization.R script to generate the plots and statistical summaries.
